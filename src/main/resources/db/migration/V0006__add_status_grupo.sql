@@ -1,0 +1,1 @@
+ALTER TABLE grupo ADD COLUMN ativo BOOLEAN DEFAULT true;

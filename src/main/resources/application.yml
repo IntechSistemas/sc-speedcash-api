@@ -1,0 +1,53 @@
+spring: 
+  datasource:
+    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}?serverTimezone=UTC
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    show-sql: ${SQL_VIEW}
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+      fail-on-ignored-properties: true
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+  jmx:
+    default-domain: test
+
+application:
+  description: Speed Cash Project - Backend
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, health, metrics, prometheus
+  endpoint:
+    health:
+      show-details: always
+  health:
+    diskspace:
+      enabled: true
+    db:
+      enabled: true
+
+speedcash:
+  stone:
+    link: ${STONE-URL}
+    code: ${STONE-CODE}
+  storage:
+    tipo: ${STORAGE-TIPO}
+    s3:
+      access-key: ${S3-ACCESS-KEY}
+      secret: ${S3-SECRET}
+      bucket: ${S3-BUCKET}
+      region: ${S3-REGION}
+      dir: ${STORAGE-DIR}
+    local: 
+      dir: ${STORAGE-DIR}
+  
+    
